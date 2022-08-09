@@ -1,27 +1,29 @@
-import './App.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { hello } from './store';
-import { useEffect } from 'react';
+import React from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import Main from "./components/Main"
+import ThunkTest from "./components/ThunkTest"
+import Post from "./components/Post"
+import Detail from "./components/Detail"
+import Update from "./components/Update"
+import { Routes, Route, Link, Redirect } from 'react-router-dom'
 
 
-function App() {
-
-const state = useSelector((state)=>state)
-console.log(state.helloRedux) // state 잘 가져옴
-
-const dispatch = useDispatch()
-
-const confirm = ()=>{ dispatch(hello('화이팅!')) } // dispatch 잘 가져옴
-
-
+const App = () => {
 
 
   return (
-    <div className="App">
-      <h1>Hello, react!</h1>
-      <button onClick={ confirm }>Redux 확인 버튼</button>
-    </div>
+    <>
+    <Routes>
+      <Route path="/routes" element={<ThunkTest/>}/>
+      <Route path="/" element={<Main/>}/>
+      <Route path="/detail/:id" element={<Detail/>}/>
+      <Route path="/post" element={<Post/>}/>
+      <Route path="/update/:id" element={<Update/>}/>
+    </Routes>
+    </>
   );
-}
+};
 
 export default App;
