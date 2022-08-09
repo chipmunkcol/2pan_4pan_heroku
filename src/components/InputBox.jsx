@@ -7,6 +7,10 @@ const InputBox = () => {
 
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
+    const [post, setPost] = useState({
+        title: "",
+        constents: ""
+    });
 
     console.log(title, contents)
     return (
