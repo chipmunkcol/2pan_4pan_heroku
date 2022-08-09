@@ -1,19 +1,33 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import Button from "./Button";
 import ButtonDisabled from "./ButtonDisabled";
 
 const InputBox = () => {
+
+    const [title, setTitle] = useState("");
+    const [contents, setContents] = useState("");
+
+    console.log(title, contents)
     return (
         <>
             <InputBoxWrapContainer>
                 <InputBoxWrap>
                     <div>Title</div>
-                    <TitleInput type="text" placeholder="input text" />
+                    <TitleInput
+                        type="text"
+                        placeholder="input text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
                 </InputBoxWrap>
                 <InputBoxWrap>
                     <div>Contents</div>
-                    <ContentsInput placeholder="input contents" />
+                    <ContentsInput
+                        placeholder="input contents"
+                        value={contents}
+                        onChange={(e) => setContents(e.target.value)}
+                    />
                 </InputBoxWrap>
                 <BtnWrap>
                     <ButtonDisabled btn="Post" />
