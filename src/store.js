@@ -1,19 +1,25 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit"
+// src/redux/modules/counterSlice.js
 
-const helloRedux = createSlice({
-	name: 'helloRedux',
-	initialState: ['야호'],              // initialState = state (= ['야호'])
-	reducers: {
-					hello(state, action) { 
-							state.push(action.payload)			
-					 },
-			}
-})
+import { createSlice, createAsyncThunk, configureStore } from "@reduxjs/toolkit";
 
-export let { hello } = helloRedux.actions
+
+const reply = createSlice({
+  name: "reply",
+  initialState: [],
+  reducers: {
+    addNumber(state, action) {
+      state.number += action.payload;
+    },
+
+  },
+});
+
+
+export const { addNumber } = reply.actions;
 
 export default configureStore({
-	reducer: {
-			helloRedux : helloRedux.reducer 
-	}
-})
+    reducer: {
+		reply: reply.reducer,
+    
+    }
+});

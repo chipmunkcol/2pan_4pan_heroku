@@ -1,9 +1,19 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "json-server",
-      "content": "json-server를 배워봅시당~!"
+      "reply": "2352525555355",
+      "edit": false,
+      "id": 1
+    },
+    {
+      "reply": "1111111",
+      "edit": false,
+      "id": 2
+    },
+    {
+      "reply": "야호야호",
+      "edit": false,
+      "id": 3
     }
   ]
 }
