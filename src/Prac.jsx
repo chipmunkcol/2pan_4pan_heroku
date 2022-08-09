@@ -22,31 +22,73 @@ function Prac() {
     //     setJsonReplys(data);
     // } 
 
-    const json = () => axios.get('http://localhost:3001/todos')
+    const json = async () => await axios.get('http://localhost:3001/todos')
     .then(function (response){
         setJsonReplys(response.data)
     })
     .catch(function (error) {
-        console.log(error)
+        console.log('무슨에러냐면:'+error)
     })
 
-    const saveJsonReply = (jsonReply) => {
-        axios.post('http://localhost:3001/todos', jsonReply);
+    const saveJsonReply = async (jsonReply) => {
+        try {
+                var check = await axios.post('http://localhost:3001/todos', jsonReply);
+            // console.log(check)
+            if (check.status === 201) {
+                setReply('');
+                setBooleam(!booleam)
+            }
+        } catch (error) {
+            alert('새로고침을 해주세요 :(')
+            console.log('error 내용: '+error)
+        }
     };
 
-    const deleteJsonReply = (replyId) => {
-        axios.delete(`http://localhost:3001/todos/${replyId}`);
+    const deleteJsonReply = async (replyId) => {
+        var check = await axios.delete(`http://localhost:3001/todos/${replyId}`);
+        // console.log(check)
+        if (check.status === 200) {
+            setBooleam(!booleam)
+        }
     };
 
-    const editJsonReply = (editId, editReply) => {
-        axios.patch(`http://localhost:3001/todos/${editId}`, editReply)
+    const editJsonReply = async (editId, editReply) => {
+        try {
+            var check = await axios.patch(`http://localhost:3001/todos/${editId}`, editReply)
+            console.log(check)
+            if (check.status === 200) {
+                setEditReply({...editReply, reply: ''})
+                setEditId(null)
+                setBooleam(!booleam)
+            }
+        } catch (error) {
+            console.log('error내용: '+error)
+            alert('수정버튼을 다시 눌러주세용')
+        }
     }
+
+    const editJsonReply2 = async (editId, editReply) => {
+        try {
+            var check = await axios.patch(`http://localhost:3001/todos/${editId}`, editReply)
+            console.log(check)
+            if (check.status === 200) {
+                // setEditReply({...editReply, reply: ''})
+                setEditId(null)
+                setBooleam(!booleam)
+            }
+        } catch (error) {
+            console.log('error내용: '+error)
+            alert('새로고침을 해주세요ㅠ')
+        }
+    }
+
+    let [boolean, setBoolean] = useState(false)
 
     useEffect(()=>{
         json()
-        console.log(jsonReplys)
+        // console.log(jsonReplys)
         // console.log(jsonReply)
-        
+       
     },[booleam])
     
 
@@ -60,40 +102,49 @@ function Prac() {
                 <div style={{backgroundColor:'#D7D7D7'}}>comment</div>
                 <div className="replyFlex1">
 
-                    {
-                        jsonReplys?.map((val, i) => {
-                            if (val.edit === false) {
+                    {           // detail?.map((details) => { return(<div></div>  ) })
+                        jsonReplys?.map((val) => {
+                            if ( val.edit === false ) {
                                 return(
                                     <div className="replyText" key={val.id}>
                                         {val.reply}
-                                        <FontAwesomeIcon type="button" icon={faTrashCan} size='lg' style={{ float: 'right' }} onClick={(e)=>{e.preventDefault();
-                                            deleteJsonReply(val.id);
-                                            setBooleam(!booleam)
+                                        <FontAwesomeIcon type="button" icon={faTrashCan} size='lg' style={{ float: 'right' }} onClick={(e)=>{e.preventDefault();                                      
+                                            deleteJsonReply(val.id);                   /* 삭제 버튼 */
                                         }}/>
                                         <span className="fa-solid fa-floppy-disk-pen">
                                         <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '0 10px 0 0' }} onClick={(e)=>{e.preventDefault();
-                                            setEditId(val.id)
-                                            setEditReply({...editReply, edit: true})
-                                            editJsonReply(editId, editReply)
-                                            setBooleam(!booleam)
+                                            if (jsonReplys.findIndex((v)=>v.edit === true) === -1 ) {   //true가 1개일때만 실행!
+                                                setEditId(val.id)                         /* 수정 버튼 */  
+                                                setEditReply({...editReply, edit: true})
+                                                editJsonReply(editId, editReply)
+                                            } else {
+                                                alert('댓글은 하나씩만 수정 가능합니다:)')
+                                            }
+                                                    //되든 안되든 클릭 할때마다 id값을 갖게 되버려서 수정할 id가 아닌 다른 id가 실행됨. 
                                         }}/>
                                         </span>
                                     </div>
                                 );
-                            } else {
+                            } else if ( val.edit === true ){ 
                                 return(
                                     <div className="replyText" key={val.id}>
                                         <input onChange={(e)=>{e.preventDefault()
-                                            
-                                            setEditReply({...editReply, reply: e.target.value,});
-                                            // setEditReply({...editReply, });
+                                                setEditId(val.id)
+                                                setEditReply({...editReply, reply: e.target.value,});
                                             }} placeholder='댓글을 입력해주세요'/>
                                         <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '0 10px 0 0' }} onClick={(e)=>{e.preventDefault();
-                                            setEditId(val.id)
-                                            setEditReply({...editReply, edit: false})
-                                            editJsonReply(editId, editReply)
-                                            setBooleam(!booleam)
-
+                                            if (editReply.reply !== '') {
+                                                async function a() {
+                                                     setEditReply({...editReply, edit: false})   ///이게 먼저 실행이 되야하는데 editJsonReply2 가 먼저 실행됨! 
+                                                }  if (editReply.edit === false) {
+                                                     editJsonReply2(editId, editReply)
+                                                }
+                                                a()
+                                                 
+                                            } else {
+                                                alert('1글자 이상 입력해주세요~')
+                                            }
+                                            
                                         }}/>
                                     </div>
                                 );
@@ -104,10 +155,10 @@ function Prac() {
                 </div>
                 <div className="replyFlex2">
                      
-                     <form onSubmit={(e)=>{e.preventDefault(); saveJsonReply(jsonReply); setReply(''); setBooleam(!booleam)}}>
+                     <form onSubmit={(e)=>{ e.preventDefault(); saveJsonReply(jsonReply); }}>
                         <input value={reply} placeholder='댓글을 입력해주세요'
                             onChange={(e)=>{ setJsonReply({...jsonReply, reply: e.target.value,}); setReply(e.target.value) }}/>
-                        <button>Send</button>
+                        <button>Send</button>        {/* 댓글 저장*/}
                      </form>
 
                 </div>
