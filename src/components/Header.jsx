@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Button from "./Button";
 import Logo from "../image/logo.svg";
 
-class Header extends Component {
-    render() {
-        return (
-            <>
-                <HeaderWrap>
-                    <img src={Logo} alt="logo" />
-                </HeaderWrap>
-            </>
-        );
-    }
+
+const Header = () => {
+    return (
+        <>
+            <HeaderWrap>
+                <img src={Logo} alt="logo" />
+            </HeaderWrap>
+        </>
+    );
 }
 
 const HeaderWrap = styled.h1`

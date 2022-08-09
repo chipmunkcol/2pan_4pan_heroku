@@ -14,8 +14,6 @@ const Post = () => {
         <Container>
             <Header />
             <PostBox />
-            {/* <AddImage />
-            <InputBox /> */}
         </Container>
     );
 }
@@ -23,6 +21,7 @@ const Post = () => {
 const Container = styled.div`
     width: 1032px;
     margin: 0 auto;
+    padding-bottom: 100px;
 `;
 
 export default Post;

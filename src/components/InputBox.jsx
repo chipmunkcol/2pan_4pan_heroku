@@ -3,27 +3,26 @@ import styled from "styled-components";
 import Button from "./Button";
 import ButtonDisabled from "./ButtonDisabled";
 
-class InputBox extends Component {
-    render() {
-        return (
-            <>
-                <InputBoxWrapContainer>
-                    <InputBoxWrap>
-                        <div>Title</div>
-                        <TitleInput type="text" placeholder="input text" />
-                    </InputBoxWrap>
-                    <InputBoxWrap>
-                        <div>Contents</div>
-                        <ContentsInput placeholder="input contents" />
-                    </InputBoxWrap>
-                    <BtnWrap>
-                        <ButtonDisabled btn="Post" />
-                    </BtnWrap>
-                </InputBoxWrapContainer>
+const InputBox = () => {
+    return (
+        <>
+            <InputBoxWrapContainer>
+                <InputBoxWrap>
+                    <div>Title</div>
+                    <TitleInput type="text" placeholder="input text" />
+                </InputBoxWrap>
+                <InputBoxWrap>
+                    <div>Contents</div>
+                    <ContentsInput placeholder="input contents" />
+                </InputBoxWrap>
+                <BtnWrap>
+                    <ButtonDisabled btn="Post" />
+                </BtnWrap>
+            </InputBoxWrapContainer>
 
-            </>
-        );
-    }
+        </>
+    );
+
 }
 
 const InputBoxWrapContainer = styled.div`

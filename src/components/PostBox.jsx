@@ -6,20 +6,18 @@ import Button from "../components/Button";
 import InputBox from "../components/InputBox";
 import AddImage from "../components/AddImage";
 
-
-class PostBox extends Component {
-    render() {
-        return (
-            <>
-                <PostBoxTop>Post</PostBoxTop>
-                <PostBoxWrap>
-                    <AddImage />
-                    <InputBox />
-                </PostBoxWrap>
-            </>
-        );
-    }
+const PostBox = () => {
+    return (
+        <>
+            <PostBoxTop>Post</PostBoxTop>
+            <PostBoxWrap>
+                <AddImage />
+                <InputBox />
+            </PostBoxWrap>
+        </>
+    );
 }
+
 
 const PostBoxTop = styled.div`
     background: linear-gradient(180deg, #FFFFFF -12.5%, #E3E3E3 100%);
