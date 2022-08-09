@@ -1,9 +1,29 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "json-server",
-      "content": "json-server를 배워봅시당~!"
+      "reply": "야호",
+      "edit": false,
+      "id": 1
+    },
+    {
+      "reply": "어디갔어~~!~!",
+      "edit": false,
+      "id": 2
+    },
+    {
+      "reply": "에잉이잉",
+      "edit": false,
+      "id": 4
+    },
+    {
+      "reply": "ㄴㄴㄴ22",
+      "edit": false,
+      "id": 5
+    },
+    {
+      "reply": "왜 안되냐곰ㄴ@~!#",
+      "edit": false,
+      "id": 6
     }
   ]
 }

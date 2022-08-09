@@ -1,19 +1,40 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit"
+// src/redux/modules/counterSlice.js
 
-const helloRedux = createSlice({
-	name: 'helloRedux',
-	initialState: ['야호'],              // initialState = state (= ['야호'])
-	reducers: {
-					hello(state, action) { 
-							state.push(action.payload)			
-					 },
-			}
-})
+import { createSlice, createAsyncThunk, configureStore } from "@reduxjs/toolkit";
 
-export let { hello } = helloRedux.actions
+export const __addNumber = createAsyncThunk(
+  "addNumber",         						    	// 첫번째 인자 : action value
+													// 두번째 인자 : 콜백함수 
+  (payload, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(addNumber(payload));
+    }, 1000);
+  }
+);
+
+
+
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: {number :0},
+  reducers: {
+    addNumber(state, action) {
+      state.number += action.payload;
+    },
+
+    minusNumber(state, action) {
+      state.number -= action.payload;
+    },
+  },
+});
+
+
+export const { addNumber, minusNumber } = counterSlice.actions;
+// export default counterSlice.reducer;
 
 export default configureStore({
-	reducer: {
-			helloRedux : helloRedux.reducer 
-	}
-})
+    reducer: {
+		counterSlice: counterSlice.reducer
+    }
+});
