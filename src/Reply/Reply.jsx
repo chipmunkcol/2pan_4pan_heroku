@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 
 
@@ -17,18 +18,22 @@ function Prac() {
 
     const [jsonReply, setJsonReply] = useState({reply: "", edit: false})
 
+    
+    // const json = async () => await axios.get('http://localhost:3001/todos')
+    // .then(function (response){
+    //     setJsonReplys(response.data)
+    // })
+    // .catch(function (error) {
+    //     console.log('무슨에러냐면:'+error)
+    // })
+
     // const json = async () => {
     //     const { data } = await axios.get('http://localhost:3001/todos');
-    //     setJsonReplys(data);
-    // } 
+    //     setJsonReplys(data)
+    // }
 
-    const json = async () => await axios.get('http://localhost:3001/todos')
-    .then(function (response){
-        setJsonReplys(response.data)
-    })
-    .catch(function (error) {
-        console.log('무슨에러냐면:'+error)
-    })
+    let json = useSelector((state)=> state)
+    console.log(json)
 
     const saveJsonReply = async (jsonReply) => {
         try {
@@ -89,7 +94,7 @@ function Prac() {
     let [boolean, setBoolean] = useState(false)
 
     useEffect(()=>{
-        json()
+        // json()
         // console.log(jsonReplys)
         // console.log(jsonReply)
        
@@ -116,7 +121,7 @@ function Prac() {
                                             deleteJsonReply(val.id);                   /* 삭제 버튼 */
                                         }}/>
                                         <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '0 10px 0 0' }} onClick={()=>{
-                                            console.log(jsonReplys.findIndex((v)=>v.edit === true))
+                                            // console.log(jsonReplys.findIndex((v)=>v.edit === true))
                                             if (jsonReplys.findIndex((v)=>v.edit === true) === -1 ) {   //true가 1개일때만 실행!
                                                 editJsonReply(val.id, {...editReply, edit: true})
                                             } else {

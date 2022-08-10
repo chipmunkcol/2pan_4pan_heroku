@@ -1,25 +1,19 @@
 // src/redux/modules/counterSlice.js
 
-import { createSlice, createAsyncThunk, configureStore } from "@reduxjs/toolkit";
+import { getDefaultMiddleware, combineReducers, createSlice, createAsyncThunk, configureStore, createReducer } from "@reduxjs/toolkit";
+import axios from "axios";
 
 
-const reply = createSlice({
-  name: "reply",
-  initialState: [],
-  reducers: {
-    addNumber(state, action) {
-      state.number += action.payload;
-    },
+const initialState = {
+  todos: [],
+}
 
-  },
-});
+export const todoSlice = createSlice({
+  name: 'todos',
+  initialState,
+  reducers: {},
+})
 
 
-export const { addNumber } = reply.actions;
-
-export default configureStore({
-    reducer: {
-		reply: reply.reducer,
-    
-    }
-});
+export const {} = todoSlice.actions;
+export default todoSlice.reducer;
