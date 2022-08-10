@@ -6,7 +6,7 @@ import { faTrashCan, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components'
 
 
-
+//push 연습
 function App () {
   const [reply, setReply] = useState('')
   const [editReply, setEditReply] = useState('')
