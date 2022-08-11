@@ -39,7 +39,7 @@ const Card = ({todo}) => {
         navigate("/update/" + todo.id)
       }}></StButton>
       </StCardHeader>
-      <StImg onClick={() => {navigate("/detail/" + todo.id)}} todoc={todo.url}>
+      <StImg onClick={() => {navigate("/detail/" + todo.id)}} todoc={todo.imgUrl}>
       </StImg>
     </StCard>
 
