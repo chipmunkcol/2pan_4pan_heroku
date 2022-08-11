@@ -15,8 +15,7 @@ class Button extends Component {
 }
 
 const Btn = styled.label`
-    height: 32px;
-    padding: 6px 16px;
+    padding: 3px 16px;
     background: linear-gradient(180deg, #FFFFFF 0%, #E3E3E3 100%);
     border: 1px solid #D7D7D7;
     border-radius: 4px;
