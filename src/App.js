@@ -18,7 +18,7 @@ const App = () => {
       <Route path="/" element={<Main/>}/>
       
       <Route path="/detail/:id" element={<div style={{
-        display: 'flex'
+        display: 'flex', minWidth:'900px', maxWidth:'1200px'
       }}><Detail/><Reply/></div>}/>
 
       <Route path="/post" element={<DasomPost/>}/>

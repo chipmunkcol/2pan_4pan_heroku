@@ -39,8 +39,11 @@ useEffect(()=>{
           <Info_Title>
             info
           </Info_Title>
-            Title: {todos[param].title }<br/>
-            Content: {todos[param].content}
+          <div style={{padding:'20px', display:'flex', flexDirection:'column', fontStyle:'normal', fontWeight:'600', fontSize:'16px', lineHeight:'30px'}}>
+            <div style={{display:'flex'}}> <span style={{width:'14%', display:'flex', justifyContent:'flex-end'}}>Title:</span> <span style={{margin:'0 0 0 10px', width:'80%'}}>{todos[param].title }</span></div>
+            <div style={{display:'flex'}}> <span style={{width:'14%', display:'flex', justifyContent:'flex-end'}}>Content:</span> <span style={{margin:'0 0 0 10px', width:'80%'}}>{todos[param].content}</span></div>
+          </div>
+            
         </Info_Container>
         
       
@@ -102,6 +105,7 @@ const StImg = styled.div`
   background-image: url(${props => props.todoc});
 	background-repeat: no-repeat;
 	background-size: cover;
+  background-position: center;
   cursor:pointer;
 
 `
