@@ -14,8 +14,8 @@ const Header = () => {
     return (
         <>
             <HeaderWrap>
-                <img src={Logo} alt="logo" onClick={() => {navigate('/')} }/>
-                <Btn onClick={() => {navigate("/")}}>Main</Btn>
+                <img src={Logo} alt="logo" style={{ cursor: "pointer" }} onClick={() => { navigate('/') }} />
+                <Btn onClick={() => { navigate("/") }}>Main</Btn>
             </HeaderWrap>
         </>
     );
@@ -31,14 +31,10 @@ const HeaderWrap = styled.h1`
 `;
 
 const Btn = styled.label`
-    height: 36px;
-    padding: 6px 32px;
+    padding: 6px 16px;
     background: linear-gradient(180deg, #FFFFFF 0%, #E3E3E3 100%);
     border: 1px solid #D7D7D7;
     border-radius: 4px;
-    margin-right: 20px;
-    font-weight: 600;
-    font-size:20px;
     cursor: pointer;
 `;
 

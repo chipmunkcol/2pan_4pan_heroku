@@ -10,10 +10,10 @@ import axios from "axios"
 
 
 
-const Card = ({todo}) => {
-  
+const Card = ({ todo }) => {
 
-  
+
+
   const [todo_arr, setTodos] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,20 +28,29 @@ const Card = ({todo}) => {
 
   return (
     <>
+      <StCard>
 
-    <StCard>
-      <StCardHeader>
-      <StSpan>{todo.title}</StSpan>
-      <StButton style={{backgroundColor:"red"}} onClick={() => {
-        onClickDeleteButtonHandler();
-        }}></StButton>
-      <StButton onClick={() => {
-        navigate("/update/" + todo.id)
-      }}></StButton>
-      </StCardHeader>
-      <StImg onClick={() => {navigate("/detail/" + todo.id)}} todoc={todo.imgUrl}>
-      </StImg>
-    </StCard>
+        {/* card */}
+        <StCardHeader>
+          {/* card title */}
+          <StSpan>{todo.title}</StSpan>
+
+          <StButtonWrap>
+            {/* card update button */}
+            <StButton onClick={() => {
+              navigate("/update/" + todo.id)
+            }}></StButton>
+
+            {/* card delete button */}
+            <StButton style={{ backgroundColor: '#FF594F' }} onClick={() => {
+              onClickDeleteButtonHandler();
+            }}></StButton>
+          </StButtonWrap>
+        </StCardHeader>
+
+        {/* image */}
+        <div><StImg onClick={() => { navigate("/detail/" + todo.id) }} todoc={todo.imgUrl}></StImg></div>
+      </StCard>
 
     </>
   );
@@ -51,53 +60,50 @@ const Card = ({todo}) => {
 
 export default Card;
 
-
 const StCard = styled.div`
-  width:400px;
-  height:300px;
-  margin-top:70px;
-  background-color: #dfdfdf;
-  display: flex;
-  justify-content: center;
-  box-shadow: 1px 1px 5px 0px;
-  position:relative;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #D7D7D7;
+  border-radius: 4px;
+  margin-bottom: 40px;
 `
 
 const StSpan = styled.span`
-  font-weight:600;
-  font-size:20px;
-  margin-left:20px;
 `
 
 const StCardHeader = styled.div`
-  width:100%;
-  height:20%;
-  background-color: #cacaca;
-  /* display: flex; */
-  justify-content: space-between;
-  align-items: center;
+  width: 496px;
+  padding: 2px 0;
+  background: linear-gradient(180deg, #FFFFFF -12.5%, #E3E3E3 100%);
+  text-align: center;
+  position: relative;
 `
+
+const StButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 4px;
+  right: 6px;
+`;
 
 const StButton = styled.button`
   background: none;
-  width:20px;
+  width:18px;
+  height:18px;
   border-radius: 30px;
-  height:20px;
   cursor: pointer;
-  float:right;
-  border:none;
-  background-color: #3fe23f;
-  margin:5px 5px 0px 5px;
+  border: none;
+  margin-left: 6px;
+  background-color:#57D063;
 `
 
 const StImg = styled.div`
-  position:absolute;
-  width:100%;
-  height:89%;
-  bottom:1px;
+  width: 496px;
+  height: 310px;
+  border: 1px solid #d7d7d7;
+  border-radius: 0 0 4px 4px;
   background-image: url(${props => props.todoc});
 	background-repeat: no-repeat;
 	background-size: cover;
   cursor:pointer;
-
 `
