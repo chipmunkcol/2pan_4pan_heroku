@@ -7,7 +7,7 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
+      const data = await axios.get("https://pleaseqwer.herokuapp.com/todos");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -16,17 +16,17 @@ export const __getTodos = createAsyncThunk(
 );
 
 export const addList = createAsyncThunk("ADD_TODO", async (newList) => {
-  const response = await axios.post("http://localhost:3001/todos", newList);
+  const response = await axios.post("https://pleaseqwer.herokuapp.com/todos", newList);
   return response.data;
 });
 
 export const deleteList = createAsyncThunk("DELETE_TODO", async (id) => {
-  const response = await axios.delete(`http://localhost:3001/todos/${id}`);
+  const response = await axios.delete(`https://pleaseqwer.herokuapp.com/todos/${id}`);
   return id;
 });
 
 export const updateList = createAsyncThunk("UPDATE_TODO", async ({ id, newPost }) => {
-  const response = await axios.patch(`http://localhost:3001/todos/${id}`, newPost);
+  const response = await axios.patch(`https://pleaseqwer.herokuapp.com/todos/${id}`, newPost);
   return { id, newPost }
 });
 
@@ -86,7 +86,7 @@ export const __getReply = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get('http://localhost:3001/replys')
+      const data = await axios.get('https://pleaseqwer.herokuapp.com/replys')
       return thunkAPI.fulfillWithValue(data.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
@@ -98,7 +98,7 @@ export const __postReply = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post('http://localhost:3001/replys', payload)
+      const data = await axios.post('https://pleaseqwer.herokuapp.com/replys', payload)
       return thunkAPI.fulfillWithValue(data.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
@@ -110,7 +110,7 @@ export const __deleteReply = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.delete(`http://localhost:3001/replys/${payload}`)
+      const data = await axios.delete(`https://pleaseqwer.herokuapp.com/replys/${payload}`)
       return thunkAPI.fulfillWithValue(data.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
@@ -122,7 +122,7 @@ export const __patchReply = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`http://localhost:3001/replys/${payload.id}`, { ...payload, edit: true })
+      const data = await axios.patch(`https://pleaseqwer.herokuapp.com/replys/${payload.id}`, { ...payload, edit: true })
       return thunkAPI.fulfillWithValue(data.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
@@ -134,7 +134,7 @@ export const __patchReply2 = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`http://localhost:3001/replys/${payload.id}`, { ...payload, edit: false, reply: payload.reply })
+      const data = await axios.patch(`https://pleaseqwer.herokuapp.com/replys/${payload.id}`, { ...payload, edit: false, reply: payload.reply })
       return thunkAPI.fulfillWithValue(data.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
