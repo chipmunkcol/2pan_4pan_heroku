@@ -25,9 +25,9 @@ export const deleteList = createAsyncThunk("DELETE_TODO", async (id) => {
   return id;
 });
 
-export const updateList = createAsyncThunk("UPDATE_TODO", async ({id, obj}) => {
-  const response = await axios.patch(`http://localhost:3001/todos/${id}`, obj);
-  return { id, obj }
+export const updateList = createAsyncThunk("UPDATE_TODO", async ({id, newPost}) => {
+  const response = await axios.patch(`http://localhost:3001/todos/${id}`, newPost);
+  return { id, newPost }
 });
 
 
