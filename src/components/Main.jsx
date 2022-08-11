@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"
 import { createGlobalStyle } from 'styled-components'
@@ -7,9 +7,6 @@ import { __getTodos } from "../store";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios"
 import main_logo from "../img/logo.png"
-
-
-
 
 
 const Main = () => {
@@ -24,30 +21,31 @@ const Main = () => {
   useEffect(() => {
     dispatch(__getTodos());
   }, [dispatch]);
-  
-  if(isLoading) {
+
+  if (isLoading) {
     return (
       <StWrapper>
-          <h1>로딩중!</h1>
-        </StWrapper>
-      ) 
-    } else{
-      
-      return (
-        <>
-    <GlobalStyle/>
-    <StHeader>
-      <img src={main_logo} style={{marginLeft:"20px"}} onClick={() => {navigate("/")}}></img>
-      <Btn onClick={() => {navigate("/post")}}>Post</Btn>
-    </StHeader>
-    <StMainList>
-    {todos.map((todo) => {
-      return <Card todo={todo} key={todo.id}/>
-    })}
-    </StMainList>
-    </>
-  );
-}}
+        <h1>로딩중!</h1>
+      </StWrapper>
+    )
+  } else {
+
+    return (
+      <>
+        <GlobalStyle />
+        <StHeader>
+          <img src={main_logo} style={{ marginLeft: "20px" }} onClick={() => { navigate("/") }}></img>
+          <Btn onClick={() => { navigate("/post") }}>Post</Btn>
+        </StHeader>
+        <StMainList>
+          {todos.map((todo) => {
+            return <Card todo={todo} key={todo.id} />
+          })}
+        </StMainList>
+      </>
+    );
+  }
+}
 
 export default Main;
 
