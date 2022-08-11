@@ -38,7 +38,9 @@ function Reply(){
     return(
       <>
       <ContainerReply>
-                <div style={{backgroundColor:'#D7D7D7', textAlign:'center'}}>comment</div>
+                <ReplyBoxTop>
+                  comment
+                </ReplyBoxTop>
                   <ReplyFlex1>
   
   
@@ -51,11 +53,11 @@ function Reply(){
                                   
                                   {val.reply}
                                   
-                                  <FontAwesomeIcon type="button" icon={faTrashCan} size='lg' style={{ float: 'right' }} onClick={()=>{                                      
+                                  <FontAwesomeIcon type="button" icon={faTrashCan} size='lg' style={{ float: 'right', margin:'10px 10px 0 0' }} onClick={()=>{                                      
                                       dispatch(__deleteReply(val.id))
                                       setReLoading(!reLoading)                /* 삭제 버튼 */
                                   }}/>
-                                  <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '0 10px 0 0' }} onClick={()=>{
+                                  <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '10px 10px 0 0' }} onClick={()=>{
                                       if (replys.findIndex((v)=>v.edit === true) === -1 ) {   //true가 1개일때만 실행!
                                           dispatch(__patchReply(val))
                                           setReLoading(!reLoading)
@@ -72,7 +74,7 @@ function Reply(){
                                   
                                   <input onChange={(e)=>{ setEditReply(e.target.value) }} placeholder='댓글을 입력해주세요'/>
                                   
-                                  <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '0 10px 0 0' }} onClick={()=>{
+                                  <FontAwesomeIcon type="button" icon={faFloppyDisk} size='lg' style={{ float: 'right', margin: '10px 10px 0 0' }} onClick={()=>{
                                       if (replys.reply !== '') {
                                           dispatch(__patchReply2({...val, reply: editReply}))
                                           setReply('')
@@ -112,11 +114,21 @@ function Reply(){
       </>
     );
   }
+
+  const ReplyBoxTop = styled.div`
+    background: linear-gradient(180deg, #FFFFFF -12.5%, #E3E3E3 100%);
+    border: 1px solid #D7D7D7;
+    border-radius: 4px 4px 0 0;
+    height: 33px;
+    text-align: center;
+  `;
   
   const ContainerReply = styled.div`
-    border: 2px solid #D7D7D7;
-    width: 500px;
-    height: 600px;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    width: 496px;
+    height: 564px;
+    box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.06);
   
     margin: 0 auto 0 auto;
     display: flex;
@@ -130,8 +142,13 @@ function Reply(){
     overflow: auto;
   `;
       const ReplyText = styled.div`
-        padding: 10px;
-        border-bottom: 1px solid gray;
+            margin: 0 auto 0 auto;
+        border-bottom: 1px solid #E1E1E1;
+        width: 448px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 45px;
       `;
   
   const ReplyFlex2 = styled.div`

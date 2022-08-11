@@ -25,7 +25,7 @@ useEffect(()=>{
 },[])
   
   return (
-    <div style={{display:'flex', flexDirection: 'column'}}>
+    <div style={{display:'flex', flexDirection: 'column', width: '100%'}}>
         
       
         <Image_Container>
@@ -54,10 +54,8 @@ export default Detail;
 
 const Image_Container = styled.div`
   box-sizing: border-box;
-  width: 496px;
+  width: 96%;
   height: 339px;
-  left: 240px;
-  top: 120px;
   background: #FFFFFF;
   border: 1px solid #D7D7D7;
   box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.06);
@@ -74,11 +72,10 @@ const Image_Title = styled.div`
 `;
 
 const Info_Container = styled.div`
+  margin: 24px 0 0 0;
   box-sizing: border-box;
-  width: 496px;
+  width: 96%;
   height: 201px;
-  left: 240px;
-  top: 483px;
   background: #FFFFFF;
   border: 1px solid #D7D7D7;
   box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.06);
