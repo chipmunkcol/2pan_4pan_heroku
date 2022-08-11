@@ -1,27 +1,33 @@
-import './App.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { hello } from './store';
-import { useEffect } from 'react';
+import React from "react";
+import Main from "./components/Main"
+import DasomPost from "./pages/DasomPost"
+import DasomUpdate from "./pages/DasomUpdate"
+import { Routes, Route, Link, Redirect } from 'react-router-dom'
+
+import Detail from '../src/component/Detail/Detail'
+import Reply from '../src/components/Reply/Reply'
 
 
-function App() {
 
-const state = useSelector((state)=>state)
-console.log(state.helloRedux) // state 잘 가져옴
-
-const dispatch = useDispatch()
-
-const confirm = ()=>{ dispatch(hello('화이팅!')) } // dispatch 잘 가져옴
-
-
+const App = () => {
 
 
   return (
-    <div className="App">
-      <h1>Hello, react!</h1>
-      <button onClick={ confirm }>Redux 확인 버튼</button>
-    </div>
-  );
+    <>
+    <Routes>
+      <Route path="/" element={<Main/>}/>
+      
+      <Route path="/detail/:id" element={<div style={{
+        display: 'flex'
+      }}><Detail/><Reply/></div>}/>
+
+      <Route path="/post" element={<DasomPost/>}/>
+      <Route path="/update/:id" element={<DasomUpdate/>}/>
+    </Routes>
+    </>
+
+  )
 }
+
 
 export default App;
