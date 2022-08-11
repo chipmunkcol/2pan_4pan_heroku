@@ -11,7 +11,7 @@ import InputBox from "./InputBox";
 import AddImg from "../../image/addImage.svg";
 
 
-const AddImage = ({urlFile, setUrlFile}) => {
+const AddImage = ({ urlFile, setUrlFile }) => {
 
     // 이미지 파일을 미리 볼 url을 저장할 state
 
@@ -43,7 +43,7 @@ const AddImage = ({urlFile, setUrlFile}) => {
             setUrlFile(fileUrl);
         }
     }
-    console.log(urlFile);
+    // console.log(urlFile);
     // console.log([fileImage])
 
     // const fileUrl = reader.result;

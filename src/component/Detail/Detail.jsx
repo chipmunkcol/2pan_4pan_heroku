@@ -12,7 +12,7 @@ import Reply from '../../components/Reply/Reply'
 const Detail = () => {
 
   const { isLoading, error, todos } = useSelector((state) => state.todos);
-  console.log(todos)
+  // console.log(todos)
 
   const params = useParams().id
   const param = todos.findIndex((v) => v.id === Number(params))

@@ -16,7 +16,7 @@ function Reply() {
 
   const dispatch = useDispatch();
   const { isLoading, error, replys } = useSelector((state) => state.replys)
-  console.log(isLoading, error, replys)
+  // console.log(isLoading, error, replys)
 
   const params = Number(useParams().id)
   const param = replys.findIndex((v) => v.todosId === params)

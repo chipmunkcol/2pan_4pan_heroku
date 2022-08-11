@@ -35,7 +35,7 @@ const InputBox = ({ urlFile }) => {
             content: contents,
             imgUrl: urlFile
         }
-        console.log(id, newPost)
+        // console.log(id, newPost)
         dispatch(updateList({ id, newPost }))
         navigate("/");
     }

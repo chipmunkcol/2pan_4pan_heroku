@@ -12,7 +12,7 @@ import InputBox from "./UpInputBox";
 import AddImg from "../../image/addImage.svg";
 
 
-const AddImage = ({urlFile, setUrlFile}) => {
+const AddImage = ({ urlFile, setUrlFile }) => {
 
 
 
@@ -46,7 +46,7 @@ const AddImage = ({urlFile, setUrlFile}) => {
             setUrlFile(fileUrl);
         }
     }
-    console.log(urlFile);
+    // console.log(urlFile);
     // console.log([fileImage])
 
     // const fileUrl = reader.result;
