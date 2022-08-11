@@ -8,7 +8,6 @@ import AddImage from "./AddImage";
 const PostBox = (fileImage) => {
 
     const [urlFile, setUrlFile] = useState("")
-    console.log(urlFile)
 
 
     return (
