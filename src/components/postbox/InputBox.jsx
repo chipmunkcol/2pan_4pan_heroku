@@ -10,7 +10,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import { v4 as uuid_v4 } from "uuid";
 import { Navigate } from "react-router-dom";
 
-const InputBox = ({urlFile}) => {
+const InputBox = ({ urlFile }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -63,6 +63,7 @@ const InputBox = ({urlFile}) => {
     );
 
 }
+
 
 const InputBoxWrapContainer = styled.div`
     display: flex;

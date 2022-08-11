@@ -14,16 +14,17 @@ const Header = () => {
     return (
         <>
             <HeaderWrap>
-                <img src={Logo} alt="logo" onClick={() => {navigate('/')} }/>
-                <Btn onClick={() => {navigate("/")}}>Main</Btn>
+                <img src={Logo} style={{ cursor: "pointer" }} alt="logo" onClick={() => { navigate('/') }} />
+                <Btn onClick={() => { navigate("/") }}>Main</Btn>
             </HeaderWrap>
         </>
     );
 }
 
-const HeaderWrap = styled.h1`
+const HeaderWrap = styled.div`
+    width: 1032px;
     height: 80px;
-    width:100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,14 +32,10 @@ const HeaderWrap = styled.h1`
 `;
 
 const Btn = styled.label`
-    height: 36px;
-    padding: 6px 32px;
+    padding: 6px 16px;
     background: linear-gradient(180deg, #FFFFFF 0%, #E3E3E3 100%);
     border: 1px solid #D7D7D7;
     border-radius: 4px;
-    margin-right: 20px;
-    font-weight: 600;
-    font-size:20px;
     cursor: pointer;
 `;
 

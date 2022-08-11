@@ -22,53 +22,37 @@ const Detail = () => {
 
 
   const current_obj = todos.find((data) => data.id === Number(id))
-  
-  if(todos.length === 0) {
+
+  if (todos.length === 0) {
     return (
       <StWrapper>
         <h1>로딩중!</h1>
       </StWrapper>
-    ) 
-  } else{
+    )
+  } else {
     return (
       <>
-        <GlobalStyle />
         <StWrapper>
           <StItem>
             <h1>title: {current_obj.title}</h1>
             <h1>content: {current_obj.content}</h1>
             <Stbutton
-              onClick={() => {navigate("/")
-              }}style={{ cursor: "pointer" }}>
+              onClick={() => {
+                navigate("/")
+              }} style={{ cursor: "pointer" }}>
               메인으로
             </Stbutton>
           </StItem>
         </StWrapper>
       </>
     );
-    
+
   }
 
 
-          }
+}
 
 export default Detail;
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;  
-  }
-
-	body {
-		padding: 0;
-		margin: 0;
-    background-color: ecdede; 
-	}
-  html {
-    height:100%;
-  }
-  `;
 
 const StWrapper = styled.div`
   width: 100%;
@@ -90,7 +74,6 @@ const StItem = styled.div`
 
 const Stbutton = styled.div`
   width: 30%;
-  background-color: antiquewhite;
   padding: 20px;
   margin: 0px 0px 50px 0px;
   text-align: center;
