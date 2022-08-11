@@ -27,13 +27,10 @@ function Prac() {
     //     console.log('무슨에러냐면:'+error)
     // })
 
-    // const json = async () => {
-    //     const { data } = await axios.get('http://localhost:3001/todos');
-    //     setJsonReplys(data)
-    // }
-
-    let json = useSelector((state)=> state)
-    console.log(json)
+    const json = async () => {
+        const { data } = await axios.get('http://localhost:3001/todos');
+        setJsonReplys(data)
+    }
 
     const saveJsonReply = async (jsonReply) => {
         try {
@@ -94,7 +91,7 @@ function Prac() {
     let [boolean, setBoolean] = useState(false)
 
     useEffect(()=>{
-        // json()
+        json()
         // console.log(jsonReplys)
         // console.log(jsonReply)
        
