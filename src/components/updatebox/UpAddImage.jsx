@@ -22,7 +22,6 @@ const AddImage = ({ urlFile, setUrlFile }) => {
     const handleChangeFile = (e) => {
 
         // 선택한 파일 확인 (아직 인코딩 전)
-        // console.log(e.target.files[0])
 
         // 이미지 데이터를 읽을 때 필요한 거인 듯..? file 개체에 사용하고
         // 이벤트를 사용하여 데이터를 전달함

@@ -57,11 +57,9 @@ export const todosSlice = createSlice({
     });
     builder.addCase(addList.fulfilled, (state, action) => {
       state.todos = [...state.todos, action.payload];
-      // console.log(state.todos);
     });
     builder.addCase(deleteList.fulfilled, (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-      // console.log(state.todos)
     });
     builder.addCase(updateList.fulfilled, (state, action) => {
       state.todos = state.todos.map((todo) => {

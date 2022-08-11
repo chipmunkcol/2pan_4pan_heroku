@@ -12,11 +12,9 @@ import Reply from '../../components/Reply/Reply'
 const Detail = () => {
 
   const { isLoading, error, todos } = useSelector((state) => state.todos);
-  // console.log(todos)
 
   const params = useParams().id
   const param = todos.findIndex((v) => v.id === Number(params))
-  // console.log(params)
 
   const dispatch = useDispatch()
 
@@ -25,6 +23,14 @@ const Detail = () => {
     dispatch(__getTodos())
 
   }, [])
+
+  if (todos.length === 0) {
+    return (
+      <StWrapper>
+        <h1>로딩중!</h1>
+      </StWrapper>
+    )
+  } else {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
@@ -62,6 +68,7 @@ const Detail = () => {
     </div>
   );
 };
+}
 
 export default Detail;
 
@@ -138,3 +145,10 @@ const StImg = styled.div`
   cursor:pointer;
 
 `
+const StWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `;

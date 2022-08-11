@@ -20,8 +20,7 @@ const InputBox = ({ urlFile }) => {
     const handlePost = () => {
         // if (!title || !contents || !imgUrl) return alert("빈칸 없이 입력해 주세요");
         if (!title || !contents) return alert("빈칸 없이 입력해 주세요");
-        // console.log(fileImage);
-        // setImageUrl(fileImage);
+
 
         const newPost = {
             title: title,

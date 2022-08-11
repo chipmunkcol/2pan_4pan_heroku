@@ -19,7 +19,6 @@ const AddImage = ({ urlFile, setUrlFile }) => {
     const handleChangeFile = (e) => {
 
         // 선택한 파일 확인 (아직 인코딩 전)
-        // console.log(e.target.files[0])
 
         // 이미지 데이터를 읽을 때 필요한 거인 듯..? file 개체에 사용하고
         // 이벤트를 사용하여 데이터를 전달함
@@ -32,19 +31,16 @@ const AddImage = ({ urlFile, setUrlFile }) => {
         }
 
         // 인코딩된 파일 정보가 입력되어 있음
-        // console.log(reader)
 
         // reader에서 읽기 동작이 성공적으로 완료되었을 때 실행
         reader.onload = () => {
             // 변수 fileUrl에 reader.result를 넣어줌(인코딩된 이미지파일의 url)
             const fileUrl = reader.result;
-            // console.log(fileUrl);
             // useState 변경값으로 fileUrl을 넣어줌으로써 렌더링함
             setUrlFile(fileUrl);
         }
     }
-    // console.log(urlFile);
-    // console.log([fileImage])
+
 
     // const fileUrl = reader.result;
     return (
