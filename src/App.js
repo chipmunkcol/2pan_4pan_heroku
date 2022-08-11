@@ -1,47 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { __getReply, __postReply, __deleteReply, __patchReply, __patchReply2 } from "./redux/modules/replySlice";
+import React from "react";
+import Main from "./components/Main"
+import DasomPost from "./pages/DasomPost"
+import DasomUpdate from "./pages/DasomUpdate"
 import { Routes, Route, Link, Redirect } from 'react-router-dom'
-import styled from 'styled-components'
-import Reply from "./component/Reply/Reply";
-import Detail from "./component/Detail/Detail";
-import Main from "./component/Main/Main";
+
+import Detail from '../src/component/Detail/Detail'
+import Reply from '../src/components/Reply/Reply'
 
 
 
-function App () {
+const App = () => {
 
 
-  
-
-  return ( 
-       <div className="App">
-          
+  return (
+    <>
     <Routes>
       <Route path="/" element={<Main/>}/>
       
-      <Route path="/detail/:id" element={
-          <div style={{display:'flex'}}>
-              <div style={{}}>
-                  <Detail></Detail>
-              </div>
+      <Route path="/detail/:id" element={<div style={{
+        display: 'flex'
+      }}><Detail/><Reply/></div>}/>
 
-              <div style={{}}>
-                  <Reply></Reply>
-              </div>
-          </div>} 
-        />\
-     </Routes>
+      <Route path="/post" element={<DasomPost/>}/>
+      <Route path="/update/:id" element={<DasomUpdate/>}/>
+    </Routes>
+    </>
 
-          
-        
-        
-        </div>
-        
-  );
-};
-
-
+  )
+}
 
 
 export default App;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React, { useSelector, useDispatch } from "react-redux";
 import axios from "axios"; // axios import 합니다.
 import { useParams } from "react-router-dom";
-import { __getTodos } from "../../redux/modules/todosSlice";
+import { __getTodos } from "../../store";
 
 
 const Detail = () => {
@@ -20,7 +20,7 @@ const dispatch = useDispatch()
 
 
 useEffect(()=>{
-    dispatch(__getTodos)
+    dispatch(__getTodos())
 
 },[])
   
@@ -32,13 +32,15 @@ useEffect(()=>{
           <Image_Title>
             title
           </Image_Title>
-            {todos[param].url}
+          <StImg todoc={todos[param].imgUrl}></StImg>
+            
         </Image_Container>
         <Info_Container>
           <Info_Title>
             info
           </Info_Title>
-            {todos[param].content}
+            Title: {todos[param].title }<br/>
+            Content: {todos[param].content}
         </Info_Container>
         
       
@@ -63,6 +65,7 @@ const Image_Container = styled.div`
 `;
 
 const Image_Title = styled.div`
+  justify-content: center;
   display: flex;
   height: 30px;
   justify-content: space-between;
@@ -83,6 +86,7 @@ const Info_Container = styled.div`
 `;
 
 const Info_Title = styled.div`
+  justify-content: center;
   display: flex;
   height: 30px;
   justify-content: space-between;
@@ -91,3 +95,13 @@ const Info_Title = styled.div`
   background: linear-gradient(180deg, #FFFFFF -12.5%, #E3E3E3 100%);
 `;  
 
+const StImg = styled.div`
+  width:100%;
+  height:89%;
+  bottom:1px;
+  background-image: url(${props => props.todoc});
+	background-repeat: no-repeat;
+	background-size: cover;
+  cursor:pointer;
+
+`
